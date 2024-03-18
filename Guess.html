@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Number Guessing Game</title>
+	<style>
+		body {
+			font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+			width: 60%;
+			margin: 20px auto;
+			text-align: center;
+			background-color: rgb(0, 0, 0);
+			border: 5px solid rgb(231, 7, 251);
+
+		}
+
+		h1 {
+            font-size: 3vw;
+			color: rgb(0, 6, 6);
+			font-family: 'Times New Roman', Times, serif;
+			background-color: cadetblue;
+            text-shadow: 1px 1px rgb(206, 223, 130);
+		}
+
+		p {
+			color: rgb(52, 2, 56);
+			font-size: 2vw;
+            background-color: rgb(189, 202, 224);
+
+		}
+
+		.container {
+			color: rgb(205, 164, 14);
+            max-width: fit-content;
+			font-weight: bold;
+			font-size: 2vw;
+			
+		}
+
+		#submit {
+			border: 0.3vw solid rgb(255, 255, 254);
+			background-color: rgb(128, 128, 128);
+			border-radius: 10px;
+			padding: 1% 2%;
+			font-size: 2vw;
+			font-weight: bold;
+			max-width: fit-content;
+			font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+		}
+
+		#submit:hover {
+			background-color: rgb(31, 31, 31);
+			color: beige;
+		}
+
+		#guess {
+			padding: 1% 2%;
+			max-width: 20%;
+			border: 2px solid rgb(9, 9, 250);
+			border-radius: 5px;
+			background-color: rgb(247, 232, 230);
+		}
+
+		#result {
+			color: rgb(234, 22, 142);
+		}
+
+		#res {
+			color: rgb(64, 24, 245);
+		}
+	</style>
+</head>
+
+<body>
+	<div class="container">
+	<h1>Guess The Number</h1>
+	<p>Enter any number between 1-10.Let's see if you can guess it right.</p>
+	</p>
+	<br>
+	
+		<label for="guess">
+			Enter a Guess
+		</label><br>
+		<input type="text" id="guess"><br><br>
+		<input type="submit" value="Submit" id="submit">
+
+		<p id="res"></p>
+		<p id="result"></p>
+		<p id="gif">
+
+		</p>
+	</div>
+	<script>
+		let random = Math.floor(Math.random() * 10 + 1);
+		let guess = 1;
+
+
+		document.getElementById("submit").onclick = function () {
+
+			// Number guessed by user
+
+			let num = document.getElementById("guess").value;
+
+			if (num == random) {
+				document.getElementById("res").innerHTML = "CONGRATULATIONS!!!"
+				document.getElementById("result").innerHTML = "You guessed it right in "
+					+ guess + " guess";
+
+				let image = document.createElement('img');
+
+				image.src = "https://media.tenor.com/4-14T5-dvlQAAAAj/cheer-up-cheer.gif";
+				image.setAttribute('width', '200vw');
+				image.setAttribute('height', '120vh');
+
+				document.getElementById('gif').appendChild(image);
+
+			}
+
+			/* If guessed number is greater than actual number*/
+			else if (num > random) {
+				guess++;
+				alert("OOPS!! Try a Smaller Number");
+			}
+			else {
+				guess++;
+				alert("OOPS!! Try a Greater Number");
+
+			}
+		}
+	</script>
+</body>
+
+</html>

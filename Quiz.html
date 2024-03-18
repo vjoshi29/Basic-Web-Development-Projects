@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Ysabeau+Office:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        background-color: rgb(2, 2, 12);
+        color: rgb(245, 245, 245);
+        font-family: "Ysabeau Office", sans-serif;
+      }
+
+      h2 {
+        text-align: center;
+      }
+      div#quiz {
+        padding: 0.2vw 3vw;
+        background-color: rgb(145, 137, 151);
+        width: 50vw;
+        border-radius: 2.5vw;
+        font-size: 2.5vw;
+        margin: auto;
+        color: black;
+        box-shadow: 1.1vw 1.1vw rgb(44, 7, 87);
+        border: 0.2vw solid #f8f4f4;
+      }
+      h1 {
+        text-align: center;
+        background-color: rgba(109, 99, 244, 0.3);
+        color: rgb(186, 252, 80);
+      }
+      button {
+        font-size: 45%;
+        font-weight: bold;
+        padding: 1vw 1.5vw;
+        border: 2px solid rgb(246, 243, 244);
+        border-radius: 1vw;
+        margin: 2% 42%;
+        background-color: rgb(29, 2, 57);
+        color: aqua;
+        font-family: "Lucida Sans";
+      }
+      button:hover {
+        background-color: rgb(10, 32, 10);
+        color: rgb(239, 243, 6);
+      }
+      #quiz_status {
+        background-color: rgb(127, 247, 247);
+        color: #000000;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Welcome to the quiz</h1>
+      <h2 id="quiz_status"></h2>
+      <div id="quiz"></div>
+    </div>
+    <script>
+      var pos = 0,
+        quiz,
+        quiz_status,
+        question,
+        selectedAnswer,
+        options,
+        optionA,
+        optionB,
+        optionC,
+        correct = 0;
+
+      // this is a multi-dimensional array with objects containing each question
+      var questions = [
+        {
+          question: "Ques: Who is the first prime minister of India?",
+          a: "Rajiv Gandhi",
+          b: "Rajendra Prasad",
+          c: "Jawaharlal Nehru",
+          answer: "C",
+        },
+        {
+          question: "Ques: What is the capital of France?",
+          a: "Paris",
+          b: "London",
+          c: "New York",
+          answer: "A",
+        },
+
+        {
+          question: "Ques: What is the currency of Japan?",
+          a: "Yuan",
+          b: "Euro",
+          c: "Yen",
+          answer: "C",
+        },
+        {
+          question: "Ques: Which is the longest river in the world?",
+          a: "Amazon River",
+          b: "Nile River ",
+          c: "Yangtze River",
+          answer: "B",
+        },
+
+        {
+          question: "Ques: Which is the smallest ocean in the world?",
+          a: "Arctic Ocean",
+          b: "Southern Ocean",
+          c: "Indian Ocean",
+          answer: "A",
+        },
+        {
+          question: "Ques: What is the largest country in the world?",
+          a: "Russia",
+          b: "China",
+          c: "United States",
+          answer: "A",
+        },
+        {
+          question: "Ques: Who painted the Mona Lisa?",
+          a: "Vincent Van Gogh",
+          b: "Pablo Picasso",
+          c: "Leonardo Da Vinci",
+          answer: "C",
+        },
+        {
+          question: "Ques: Sardar Sarovar Dam is constructed on which river?",
+          a: "Satluj",
+          b: "Narmada",
+          c: "Kaveri",
+          answer: "B",
+        },
+        {
+          question: "Ques: What is the capital of Sikkim?",
+          a: "Gangtok",
+          b: "Shillong",
+          c: "Agartala",
+          answer: "A",
+        },
+        {
+          question: "Ques: Which is the largest bird in the world?",
+          a: "Emu",
+          b: "Albatross",
+          c: "Ostrich",
+          answer: "C",
+        },
+      ];
+
+      // this get function is short for the getElementById function
+      function get(x) {
+        return document.getElementById(x);
+      }
+
+      // this function renders a question for display on the page
+      function renderQuestion() {
+        quiz = get("quiz");
+        if (pos >= questions.length) {
+          quiz.innerHTML =
+            "<h2>You answered " +
+            correct +
+            " out of " +
+            questions.length +
+            " questions correctly.</h2><br><button onclick='renderQuestion()'>PLAY AGAIN</button>";
+          get("quiz_status").innerHTML = "Quiz completed";
+          // resets the variable to allow users to restart the quiz
+          pos = 0;
+          correct = 0;
+          // stops rest of renderQuestion function running when quiz is completed
+          return false;
+        }
+
+        get("quiz_status").innerHTML =
+          "Question " + (pos + 1) + " of " + questions.length;
+
+        question = questions[pos].question;
+        optionA = questions[pos].a;
+        optionB = questions[pos].b;
+        optionC = questions[pos].c;
+
+        // display the current question
+        quiz.innerHTML = "<h3>" + question + "</h3>";
+
+        // display the answer options
+        // the += appends to the data we started on the line above
+        quiz.innerHTML +=
+          "<label> <input type='radio' name='options' value='A'> " +
+          optionA +
+          "</label><br>";
+        quiz.innerHTML +=
+          "<label> <input type='radio' name='options' value='B'> " +
+          optionB +
+          "</label><br>";
+        quiz.innerHTML +=
+          "<label> <input type='radio' name='options' value='C'> " +
+          optionC +
+          "</label><br><br>";
+        quiz.innerHTML += "<button onclick='checkAnswer()'>SUBMIT</button>";
+      }
+
+      function checkAnswer() {
+        // use getElementsByName because we have an array which it will loop through
+        options = document.getElementsByName("options");
+        for (var i = 0; i < options.length; i++) {
+          if (options[i].checked) {
+            selectedAnswer = options[i].value;
+          }
+        }
+        // checks if selected answer matches the correct answer
+        if (selectedAnswer == questions[pos].answer) {
+          //each time there is a correct answer this value increases
+          correct++;
+        }
+        // changes position of which questions user is up to
+        pos++;
+        // then the renderQuestion function is called again to go to next question
+        renderQuestion();
+      }
+      // Add event listener to call renderQuestion on page load event
+      window.addEventListener("load", renderQuestion);
+    </script>
+  </body>
+</html>

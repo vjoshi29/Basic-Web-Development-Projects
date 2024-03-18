@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Random Quote Generator</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Ysabeau+Office:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+        text-align: center;
+      }
+
+      h1 {
+        background-color: rgb(66, 2, 92);
+        padding: 0.2vw;
+        margin-top: 1vw;
+        color: rgb(254, 247, 247);
+        font-size: 3vw;
+      }
+      body {
+        background-color: rgb(133, 163, 93);
+      }
+      .container {
+        width: 50%;
+        height: fit-content;
+        margin: auto;
+        margin-top: 5vw;
+        background-color: rgb(9, 1, 24);
+        border-radius: 2vw;
+        box-shadow: 1vw 1vw rgb(43, 1, 24);
+        border: 1px solid #c0c0c0;
+      }
+      #quote {
+        padding: 2.5vw 2vw;
+        color: rgb(243, 221, 18);
+        font-size: 2vw;
+        font-family: "Ysabeau Office", sans-serif;
+      }
+      h3 {
+        color: #808080;
+        text-align: right;
+        margin-right: 2vw;
+        margin-bottom: 1vw;
+        font-family: "Lucida handwriting";
+        font-size: 1vw;
+      }
+      #btn {
+        margin-top: 5%;
+        padding: 0.5vw 1vw;
+        font-size: 2vw;
+        font-weight: bolder;
+        background-color: rgb(211, 205, 90);
+        border-radius: 1.5vw;
+        color: rgb(53, 17, 3);
+        box-shadow: 0.4vw 0.4vw rgb(15, 8, 8);
+        border: 0.2vw solid black;
+      }
+      #btn:hover {
+        background-color: rgb(116, 114, 21);
+        color: rgb(1, 17, 4);
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Quote For The Day</h1>
+    <div class="container">
+      <p id="quote"></p>
+      <h3 id="author"></h3>
+    </div>
+
+    <button id="btn">Get Quote</button>
+    <script>
+      let quote = document.getElementById("quote");
+      let author = document.getElementById("author");
+      let btn = document.getElementById("btn");
+
+      const url = "https://api.quotable.io/random";
+
+      let getQuote = () => {
+        fetch(url)
+          .then((data) => data.json())
+          .then((item) => {
+            quote.innerText = item.content;
+            author.innerText = "~ " + item.author;
+          });
+      };
+
+      window.addEventListener("load", getQuote);
+      btn.addEventListener("click", getQuote);
+    </script>
+  </body>
+</html>
