@@ -1,11 +1,10 @@
-ABOUT THE PROJECT:-
+ABOUT THE PROJECT:- 
 Basic web development projects made using html,css,javascript and bootstrap.
 
 INCLUDES:-  
 1)Calculator  
 2)Quotes App  
 3)Guess the Number Game  
-
 4)Gk Quiz
 
 OUTPUT:-  
