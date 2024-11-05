@@ -1,5 +1,5 @@
-**ABOUT THE PROJECTS**  
-_Basic web development projects made using html , css , javascript and bootstrap._
+**BASIC WEB DEVELOPMENT PROJECTS**  
+_**Technologies-** HTML , CSS , Javascript and Bootstrap._
 _________________________________________________________________________________________________________________________
 
 **INCLUDES:-**   
