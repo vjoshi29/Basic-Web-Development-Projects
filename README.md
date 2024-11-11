@@ -3,6 +3,7 @@ ________________________________________________________________________________
 _________________________________________________________________________________________________________________________
 _**Technologies-** HTML , CSS , Javascript and Bootstrap._
 _________________________________________________________________________________________________________________________
+Basic Web Development projects designed to get hands-on experience with core frontend technologies like HTML, CSS, and JavaScript. These projects focus on fundamental skills such as building layouts, creating interactive elements, and understanding the structure of web pages. 
 
 **INCLUDES:-**   
 1) Calculator  
